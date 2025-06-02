@@ -1,0 +1,240 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f5f5f5;
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app.light {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.app.dark {
+  background-color: #181818;
+  color: #f0f0f0;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 40px;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-theme {
+  background: none;
+  border: 2px solid currentColor;
+  color: inherit;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  margin-bottom: 50px;
+}
+
+.toggle-theme:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 400px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  padding: 30px 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+  transition: background-color 0.3s ease;
+}
+
+.app.dark .controls {
+  background-color: rgba(30, 30, 30, 0.9);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.controls label {
+  font-size: 1rem;
+  margin-bottom: 6px;
+  text-align: left;
+}
+
+.controls input,
+.controls select {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.controls input:focus,
+.controls select:focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 6px rgba(76, 175, 80, 0.4);
+}
+
+.app.dark .controls input,
+.app.dark .controls select {
+  background-color: #2c2c2c;
+  border: 1px solid #555;
+  color: #f0f0f0;
+}
+
+.app.dark .controls input:focus,
+.app.dark .controls select:focus {
+  border-color: #90ee90;
+  box-shadow: 0 0 6px rgba(144, 238, 144, 0.4);
+}
+
+.controls .button-main {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 500;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.controls .button-main:hover {
+  background-color: #43a047;
+  transform: translateY(-2px);
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.15);
+}
+
+.controls .button-main:disabled {
+  background-color: #a5a5a5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.timer-info {
+  font-size: 2rem;
+  margin-top: 30px;
+  font-weight: 500;
+}
+
+.progress-bar {
+  width: 100%;
+  max-width: 400px;
+  height: 28px;
+  background-color: #e0e0e0;
+  border-radius: 14px;
+  margin: 30px 0;
+  overflow: hidden;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4caf50 0%, #8bc34a 100%);
+  width: 0%;
+  transition: width 1s linear;
+}
+
+.message {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-top: 25px;
+  color: #333;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.app.dark .message {
+  color: #f0f0f0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.count-display {
+  font-size: 1.25rem;
+  margin-top: 18px;
+  color: #388e3c;
+  font-weight: 500;
+}
+
+.app.dark .count-display {
+  color: #90ee90;
+}
+
+@media (max-width: 480px) {
+  .app {
+    padding: 30px 10px;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
+  .controls {
+    padding: 20px 15px;
+    gap: 12px;
+  }
+
+  .controls input,
+  .controls select {
+    font-size: 0.95rem;
+    padding: 12px 14px;
+  }
+
+  .controls .button-main {
+    font-size: 1rem;
+    padding: 12px 24px;
+  }
+
+  .progress-bar {
+    height: 24px;
+  }
+
+  .timer-info {
+    font-size: 1.75rem;
+    margin-top: 24px;
+  }
+
+  .message {
+    font-size: 1.4rem;
+    margin-top: 20px;
+  }
+
+  .count-display {
+    font-size: 1.1rem;
+    margin-top: 16px;
+  }
+}
